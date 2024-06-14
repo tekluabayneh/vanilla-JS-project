@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      .hero {
+        min-height: 100vh;
+        background: #8ac24a;
+        display: grid;
+        place-items: center;
+      }
+      .banner {
+        background: white;
+        padding: 4rem 0;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px black;
+        text-align: center;
+        width: 90vw;
+        max-width: 40%;
+      }
+      .modal-btn {
+        margin-top: 2rem;
+        background: rgb(196, 248, 111);
+        border-color: rgb(215, 252, 148);
+        color: rgb(10, 8, 8);
+        padding: 0.3rem;
+      }
+      .modal-btn:hover {
+        background: transparent;
+        color: rgb(0, 0, 0);
+      }
+      .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(31, 47, 58, 0.5);
+        display: grid;
+        place-items: center;
+        transition: 0.5s;
+        visibility: hidden;
+        z-index: -10;
+      }
+      /* OPEN/CLOSE MODAL */
+      .open-modal {
+        visibility: visible;
+        z-index: 10;
+      }
+
+      .modal-container {
+        background: white;
+        border-radius: 0.5rem;
+        width: 90vw;
+        height: 30vh;
+        max-width: 40%;
+        text-align: center;
+        display: grid;
+        place-items: center;
+        position: relative;
+      }
+      .close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        font-size: 2rem;
+        background: transparent;
+        border-color: transparent;
+        color: black;
+        cursor: pointer;
+        transition: 0.5s;
+      }
+      .close-btn:hover {
+        color: rgb(168, 245, 116);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- hero -->
+    <header class="hero">
+      <div class="banner">
+        <h1>modal project</h1>
+        <button class="btn modal-btn">open modal</button>
+      </div>
+    </header>
+    <!-- modal -->
+    <div class="modal-overlay">
+      <div class="modal-container">
+        <h3>modal content</h3>
+        <button class="close-btn"><i class="fas fa-times">Close</i></button>
+      </div>
+    </div>
+    <!-- javascript -->
+    <script>
+      const modalbtn = document.querySelector(".modal-btn");
+      const closebtn = document.querySelector(".close-btn");
+      const modaloverlay = document.querySelector(".modal-overlay");
+
+      const modelclas = closebtn.classList.contains("open-modal");
+      console.log(modelclas);
+
+      modalbtn.addEventListener("click", function () {
+        modaloverlay.classList.add("open-modal");
+      });
+      closebtn.addEventListener("click", function () {
+        modaloverlay.classList.remove("open-modal");
+      });
+    </script>
+  </body>
+</html>

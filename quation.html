@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+
+        .title {
+  margin-top: 6vh;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+.title h2 {
+  color: #c59d5f;
+  font-family: "Great Vibes", cursive;
+  text-align: center;
+  text-transform: capitalize;
+}
+        section{
+            width: 100%;
+            height: 100dvh;
+            display: flex;
+            row-gap: 1rem;
+            flex-direction: column;
+         align-items: center;
+           background: hsl(210, 36%, 96%);
+            
+        }
+    
+.question{
+    width: 60%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    margin-top:1rem;
+    padding: 2rem;
+    line-height: 1.3rem;
+   transition: 0.5s;
+}
+
+
+.show_List{
+    height: 9rem;
+    transition: 0.5s;
+} 
+
+.question-title{
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+}
+.question-title p{
+    font-size: 1.1rem;
+    letter-spacing: 0.1rem;
+    font-family:"Roboto", sans-serif;
+ }
+ .question-text p{
+    border-top: 2px solid black;
+   
+ }
+ .para{
+  padding: 1rem;
+ }
+
+    </style>
+</head>
+<body>
+    
+      <section class="questions">
+        <!-- title -->
+        <div class="title">
+          <h2>general questions</h2>
+        </div>
+        <!-- questions -->
+        <div class="section-center">
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title">
+              <p>do you accept all major credit cards?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square">btn</i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square">btn</i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text">
+              <p class="para">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title">
+              <p>do you suppport local farmers?</p>
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square">btn</i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square">btn</i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text">
+              <p class="para">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <!-- single question -->
+          <article class="question">
+            <!-- question title -->
+            <div class="question-title">
+              <p>do you use organic ingredients?</p>
+              <!-- button -->
+              <button type="button" class="question-btn">
+                <span class="plus-icon">
+                  <i class="far fa-plus-square">btn</i>
+                </span>
+                <span class="minus-icon">
+                  <i class="far fa-minus-square">btn</i>
+                </span>
+              </button>
+            </div>
+            <!-- question text -->
+            <div class="question-text">
+              <p class="para">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est
+                dolore illo dolores quia nemo doloribus quaerat, magni numquam
+                repellat reprehenderit.
+              </p>
+            </div>
+          </article>
+          <!-- end of single question -->
+          <script>
+
+   const Togglebtnwithmother = document.querySelectorAll(".question")
+
+Togglebtnwithmother.forEach(function(question){
+ const btn = question.querySelector(".question-btn")
+
+btn.addEventListener("click", function(){
+   Togglebtnwithmother.forEach(function(item){
+ if (item !== question) {
+        item.classList.remove("show_List");
+      }
+    });
+   question.classList.toggle("show_List")
+
+})
+
+})
+
+
+
+
+ // this is another way doing this they wolrk the same thing
+
+/*           const Togglebtn = document.querySelectorAll(".question-btn")     
+         
+ Togglebtn.forEach(function(btn){
+btn.addEventListener('click', function(e){
+  const quation = e.currentTarget.parentElement.parentElement
+
+  quation.classList.toggle("show_List")
+
+
+})
+ }) 
+ */
+
+          </script>
+      </section>
+</body>
+</html>

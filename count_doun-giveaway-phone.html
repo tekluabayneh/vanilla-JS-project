@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown</title>
+    <style>
+      /*
+=============== 
+Fonts
+===============
+*/
+      @import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+      /*
+=============== 
+Variables
+===============
+*/
+
+      :root {
+        /* dark shades of primary color*/
+        --clr-primary-1: hsl(205, 86%, 17%);
+        --clr-primary-2: hsl(205, 77%, 27%);
+        --clr-primary-3: hsl(205, 72%, 37%);
+        --clr-primary-4: hsl(205, 63%, 48%);
+        /* primary/main color */
+        --clr-primary-5: #49a6e9;
+        /* lighter shades of primary color */
+        --clr-primary-6: hsl(205, 89%, 70%);
+        --clr-primary-7: hsl(205, 90%, 76%);
+        --clr-primary-8: hsl(205, 86%, 81%);
+        --clr-primary-9: hsl(205, 90%, 88%);
+        --clr-primary-10: hsl(205, 100%, 96%);
+        /* darkest grey - used for headings */
+        --clr-grey-1: hsl(209, 61%, 16%);
+        --clr-grey-2: hsl(211, 39%, 23%);
+        --clr-grey-3: hsl(209, 34%, 30%);
+        --clr-grey-4: hsl(209, 28%, 39%);
+        /* grey used for paragraphs */
+        --clr-grey-5: hsl(210, 22%, 49%);
+        --clr-grey-6: hsl(209, 23%, 60%);
+        --clr-grey-7: hsl(211, 27%, 70%);
+        --clr-grey-8: hsl(210, 31%, 80%);
+        --clr-grey-9: hsl(212, 33%, 89%);
+        --clr-grey-10: hsl(210, 36%, 96%);
+        --clr-white: #fff;
+        --clr-red-dark: hsl(360, 67%, 44%);
+        --clr-red-light: hsl(360, 71%, 66%);
+        --clr-green-dark: hsl(125, 67%, 44%);
+        --clr-green-light: hsl(125, 71%, 66%);
+        --clr-black: #222;
+        --clr-gold: #c59d5f;
+        --ff-primary: "Roboto", sans-serif;
+        --ff-secondary: "Open Sans", sans-serif;
+        --transition: all 0.3s linear;
+        --spacing: 0.25rem;
+        --radius: 0.5rem;
+        --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        --max-width: 1170px;
+        --fixed-width: 620px;
+      }
+      /*
+=============== 
+Global Styles
+===============
+*/
+
+      *,
+      ::after,
+      ::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--ff-secondary);
+        background: var(--clr-grey-10);
+        color: var(--clr-grey-1);
+        line-height: 1.5;
+        font-size: 0.875rem;
+      }
+      ul {
+        list-style-type: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      img:not(.logo) {
+        width: 100%;
+      }
+      img {
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        letter-spacing: var(--spacing);
+        text-transform: capitalize;
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+        font-family: var(--ff-primary);
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+      h4 {
+        font-size: 0.875rem;
+      }
+      p {
+        margin-bottom: 1.25rem;
+        color: var(--clr-grey-5);
+      }
+      @media screen and (min-width: 800px) {
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+        h3 {
+          font-size: 1.75rem;
+        }
+        h4 {
+          font-size: 1rem;
+        }
+        body {
+          font-size: 1rem;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+          line-height: 1;
+        }
+      }
+      /*  global classes */
+
+      .btn {
+        text-transform: uppercase;
+        background: transparent;
+        color: var(--clr-black);
+        padding: 0.375rem 0.75rem;
+        letter-spacing: var(--spacing);
+        display: inline-block;
+        transition: var(--transition);
+        font-size: 0.875rem;
+        border: 2px solid var(--clr-black);
+        cursor: pointer;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius);
+      }
+      .btn:hover {
+        color: var(--clr-white);
+        background: var(--clr-black);
+      }
+      /* section */
+      .section {
+        padding: 5rem 0;
+      }
+
+      .section-center {
+        width: 90vw;
+        margin: 5rem auto;
+        max-width: 1170px;
+      }
+
+      main {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+      }
+      /*
+=============== 
+Countdown Timer
+===============
+*/
+      .gift-img {
+        margin-bottom: 2rem;
+      }
+      .gift-info h3 {
+        text-transform: uppercase;
+        color: var(--clr-primary-3);
+      }
+      .gift-info p {
+        color: var(--clr-grey-6);
+      }
+      .date {
+        color: var(--clr-grey-5);
+        font-size: 0.85rem;
+      }
+      @media screen and (min-width: 992px) {
+        .section-center {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          place-items: center;
+          gap: 3rem;
+          width: 95vw;
+        }
+        .gift-img {
+          margin-bottom: 0;
+        }
+      }
+      .gift-info p {
+        margin: 2rem 0;
+      }
+      .deadline {
+        display: flex;
+      }
+      .deadline-format {
+        background: var(--clr-grey-1);
+        color: var(--clr-white);
+        margin-right: 1rem;
+        width: 5rem;
+        height: 5rem;
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+      .deadline-format span {
+        display: block;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 0.85rem;
+      }
+      .deadline h4:not(.expired) {
+        font-size: 2rem;
+        margin-bottom: 0.25rem;
+        letter-spacing: var(--spacing);
+      }
+    </style>
+
+    <!-- styles -->
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="section-center">
+      <!-- image -->
+      <article class="gift-img">
+        <img src="img/gift.jpeg" alt="gift" />
+      </article>
+      <!-- info -->
+      <article class="gift-info">
+        <h3>old iphone giveaway</h3>
+        <h4 class="giveaway">giveaway ends on Sunday, 24 April 2020, 8:00am</h4>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          Reprehenderit molestiae cum libero atque ut voluptate qui consectetur
+          aliquid incidunt voluptatem quos, dolore, non commodi quaerat aliquam
+          eligendi, quisquam totam blanditiis.
+        </p>
+        <div class="deadline">
+          <!-- days -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="days">34</h4>
+              <span>days</span>
+            </div>
+          </div>
+          <!-- end of days -->
+          <!-- days -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="hours">34</h4>
+              <span>hours</span>
+            </div>
+          </div>
+          <!-- end of days -->
+          <!-- minutes -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="minutes">34</h4>
+              <span>mins</span>
+            </div>
+          </div>
+          <!-- end of days -->
+          <!-- minutes -->
+          <div class="deadline-format">
+            <div>
+              <h4 class="seconds">34</h4>
+              <span>secs</span>
+            </div>
+          </div>
+          <!-- end of days -->
+        </div>
+      </article>
+    </section>
+    <!-- javascript -->
+    <script>
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+      const weekdays = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      const giveaway = document.querySelector(".giveaway");
+      const deadline = document.querySelector(".deadline");
+      const items = document.querySelectorAll(".deadline-format h4");
+
+      let tempDate = new Date();
+      let tempYear = tempDate.getFullYear();
+      let tempMonth = tempDate.getMonth();
+      let tempDay = tempDate.getDate();
+      // months are ZERO index based;
+
+      const futureDate = new Date(tempYear, tempMonth, tempDay + 10, 11, 30, 0);
+
+      // let futureDate = new Date(2020, 3, 24, 11, 30, 0);
+
+      const year = futureDate.getFullYear();
+      const hours = futureDate.getHours();
+      const minutes = futureDate.getMinutes();
+
+      let month = futureDate.getMonth();
+      month = months[month];
+      const weekday = weekdays[futureDate.getDay()];
+      const date = futureDate.getDate();
+      giveaway.textContent = `giveaway ends on ${weekday}, ${date} ${month} ${year} ${hours}:${minutes}am`;
+
+      const futureTime = futureDate.getTime();
+      function getRemaindingTime() {
+        const today = new Date().getTime();
+
+        const t = futureTime - today;
+        // 1s = 1000ms
+        // 1m = 60s
+        // 1hr = 60m
+        // 1d = 24hr
+        // values in miliseconds
+        const oneDay = 24 * 60 * 60 * 1000;
+        const oneHour = 60 * 60 * 1000;
+        const oneMinute = 60 * 1000;
+        // calculate all values
+        let days = t / oneDay;
+        days = Math.floor(days);
+        let hours = Math.floor((t % oneDay) / oneHour);
+        let minutes = Math.floor((t % oneHour) / oneMinute);
+        let seconds = Math.floor((t % oneMinute) / 1000);
+
+        // set values array
+        const values = [days, hours, minutes, seconds];
+        function format(item) {
+          if (item < 10) {
+            return (item = `0${item}`);
+          }
+          return item;
+        }
+
+        items.forEach(function (item, index) {
+          item.innerHTML = format(values[index]);
+        });
+
+        if (t < 0) {
+          clearInterval(countdown);
+          deadline.innerHTML = `<h4 class="expired">sorry, this giveaway has expired!</h4>`;
+        }
+      }
+      // countdown;
+      let countdown = setInterval(getRemaindingTime, 1000);
+      //set initial values
+      getRemaindingTime();
+    </script>
+  </body>
+</html>

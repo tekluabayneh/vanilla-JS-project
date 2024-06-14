@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        /* dark shades of primary color*/
+        --clr-primary-1: hsl(205, 86%, 17%);
+        --clr-primary-2: hsl(205, 77%, 27%);
+        --clr-primary-3: hsl(205, 72%, 37%);
+        --clr-primary-4: hsl(205, 63%, 48%);
+        /* primary/main color */
+        --clr-primary-5: #49a6e9;
+        /* lighter shades of primary color */
+        --clr-primary-6: hsl(205, 89%, 70%);
+        --clr-primary-7: hsl(205, 90%, 76%);
+        --clr-primary-8: hsl(205, 86%, 81%);
+        --clr-primary-9: hsl(205, 90%, 88%);
+        --clr-primary-10: hsl(205, 100%, 96%);
+        /* darkest grey - used for headings */
+        --clr-grey-1: hsl(209, 61%, 16%);
+        --clr-grey-2: hsl(211, 39%, 23%);
+        --clr-grey-3: hsl(209, 34%, 30%);
+        --clr-grey-4: hsl(209, 28%, 39%);
+        /* grey used for paragraphs */
+        --clr-grey-5: hsl(210, 22%, 49%);
+        --clr-grey-6: hsl(209, 23%, 60%);
+        --clr-grey-7: hsl(211, 27%, 70%);
+        --clr-grey-8: hsl(210, 31%, 80%);
+        --clr-grey-9: hsl(212, 33%, 89%);
+        --clr-grey-10: hsl(210, 36%, 96%);
+        --clr-white: #fff;
+        --clr-red-dark: hsl(360, 67%, 44%);
+        --clr-red-light: hsl(360, 71%, 66%);
+        --clr-green-dark: hsl(125, 67%, 44%);
+        --clr-green-light: hsl(125, 71%, 66%);
+        --clr-black: #222;
+        --ff-primary: "Roboto", sans-serif;
+        --ff-secondary: "Open Sans", sans-serif;
+        --transition: all 0.3s linear;
+        --spacing: 0.25rem;
+        --radius: 0.5rem;
+        --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        --max-width: 1170px;
+        --fixed-width: 620px;
+      }
+      /*
+                ===============
+                Global Styles
+                ===============
+                */
+
+      *,
+      ::after,
+      ::before {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: var(--ff-secondary);
+        background: var(--clr-grey-10);
+        color: var(--clr-grey-1);
+        line-height: 1.5;
+        font-size: 0.875rem;
+      }
+      ul {
+        list-style-type: none;
+      }
+      a {
+        text-decoration: none;
+      }
+      img:not(.logo) {
+        width: 100%;
+      }
+      img {
+        display: block;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        letter-spacing: var(--spacing);
+        text-transform: capitalize;
+        line-height: 1.25;
+        margin-bottom: 0.75rem;
+        font-family: var(--ff-primary);
+      }
+      h1 {
+        font-size: 3rem;
+      }
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.25rem;
+      }
+      h4 {
+        font-size: 0.875rem;
+      }
+      p {
+        margin-bottom: 1.25rem;
+        color: var(--clr-grey-5);
+      }
+      @media screen and (min-width: 800px) {
+        h1 {
+          font-size: 4rem;
+        }
+        h2 {
+          font-size: 2.5rem;
+        }
+        h3 {
+          font-size: 1.75rem;
+        }
+        h4 {
+          font-size: 1rem;
+        }
+        body {
+          font-size: 1rem;
+        }
+        h1,
+        h2,
+        h3,
+        h4 {
+          line-height: 1;
+        }
+      }
+      /*  global classes */
+
+      .section-hero-conatiner {
+        width: 100%;
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 2rem;
+      }
+
+      .head-Title {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 6rem;
+
+        h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      .About_center {
+        width: 97%;
+        display: flex;
+        /*         flex-direction: column;
+           */
+        column-gap: 1.5rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .about-img {
+        width: 95%;
+      }
+
+      .img {
+        border-radius: 0.4rem;
+      }
+      .about {
+        width: 100%;
+        height: 50dvh;
+        overflow: hidden;
+        background: var(--clr-white);
+        border-radius: var(--radius);
+      }
+      .content {
+        width: 95%;
+        height: 100dvh;
+        padding: 1.6rem;
+      }
+
+      .btn-container {
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding: 0rem;
+      }
+      .tab-btn {
+        width: 33.3%;
+        border: none;
+        background: var(--clr-grey-9);
+        font-size: 1rems;
+        cursor: pointer;
+        transition: var(--transition);
+        letter-spacing: var(--spacing);
+        padding: 1rem 0 1rem 0;
+        border-bottom-left-radius: 0.3rem;
+        border-bottom-right-radius: 0.3rem;
+      }
+      .tab-btn:hover:not(.active) {
+        background: var(--clr-primary-10);
+        color: var(--clr-primary-5);
+      }
+      /* hide content */
+      .content {
+        display: none;
+      }
+      .tab-btn.active {
+        background: var(--clr-white);
+      }
+      .active.content {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="section-hero-conatiner">
+      <div class="head-Title">
+        <h1>About</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum,
+          aperiam!
+        </p>
+      </div>
+
+      <div class="About_center section_center">
+        <article class="about-img">
+          <div class="img_container">
+            <img class="img" src="hero-bcg.jpeg" alt="" />
+          </div>
+        </article>
+
+        <article class="about">
+          <!-- btn container -->
+          <div class="btn-container">
+            <button class="tab-btn active" data-id="history">history</button>
+            <button class="tab-btn" data-id="vision">vision</button>
+            <button class="tab-btn" data-id="goals">goals</button>
+          </div>
+
+          <div class="about-content">
+            <!-- single item -->
+            <div class="active content" id="history">
+              <h4>History</h4>
+              <p>
+                I'm baby wolf pickled schlitz try-hard normcore marfa man bun
+                mumblecore vice pop-up XOXO lomo kombucha glossier bicycle
+                rights. Umami kinfolk salvia jean shorts offal venmo. Knausgaard
+                tilde try-hard, woke fixie banjo man bun. Small batch tumeric
+                mustache tbh wayfarers 8-bit shaman chartreuse tacos. Viral
+                direct trade hoodie ugh chambray, craft beer pork belly flannel
+                tacos single-origin coffee art party migas plaid pop-up.
+              </p>
+            </div>
+            <!-- end of single item -->
+
+            <!-- second -->
+            <div class="content" id="Vision">
+              <h4>Vision</h4>
+              <p>
+                Man bun PBR&B keytar copper mug prism, hell of helvetica. Synth
+                crucifix offal deep v hella biodiesel. Church-key listicle
+                polaroid put a bird on it chillwave palo santo enamel pin,
+                tattooed meggings franzen la croix cray. Retro yr aesthetic four
+                loko tbh helvetica air plant, neutra palo santo tofu mumblecore.
+                Hoodie bushwick pour-over jean shorts chartreuse shabby chic.
+                Roof party hammock master cleanse pop-up truffaut, bicycle
+                rights skateboard affogato readymade sustainable deep v
+                live-edge schlitz narwhal.
+              </p>
+              <ul>
+                <li>list item</li>
+                <li>list item</li>
+                <li>list item</li>
+              </ul>
+            </div>
+            <!-- end of single item -->
+
+            <!-- thired -->
+            <div class="content" id="goals">
+              <h4>goals</h4>
+              <p>
+                Chambray authentic truffaut, kickstarter brunch taxidermy vape
+                heirloom four dollar toast raclette shoreditch church-key.
+                Poutine etsy tote bag, cred fingerstache leggings cornhole
+                everyday carry blog gastropub. Brunch biodiesel sartorial mlkshk
+                swag, mixtape hashtag marfa readymade direct trade man braid
+                cold-pressed roof party. Small batch adaptogen coloring book
+                heirloom. Letterpress food truck hammock literally hell of wolf
+                beard adaptogen everyday carry. Dreamcatcher pitchfork yuccie,
+                banh mi salvia venmo photo booth quinoa chicharrones.
+              </p>
+            </div>
+            <!-- end of single item -->
+          </div>
+        </article>
+      </div>
+    </section>
+    <script>
+      const about = document.querySelector(".about");
+      const btns = document.querySelectorAll(".tab-btn");
+      const articles = document.querySelectorAll(".content");
+
+      about.addEventListener("click", function (e) {
+        const id = e.target.dataset.id;
+
+        if (id) {
+          btns.forEach(function (btn) {
+            btn.classList.remove("active");
+            e.target.classList.add("active");
+          });
+
+          articles.forEach(function (removedclass) {
+            removedclass.classList.remove("active");
+          });
+
+          const getid = document.getElementById(id);
+
+          getid.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
